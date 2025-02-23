@@ -6,7 +6,7 @@ const App = () => {
 
 
   return (
-    <div>
+    <div className="max-w-[40%] mx-auto">
       <ProjectForm />
       <ProjectList />
     </div>

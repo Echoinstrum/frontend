@@ -61,24 +61,31 @@ const ProjectDetailModal = ({ project, onClose }) => {
 
                 {isEditing ? (
                     <>
+                        <p><strong>Projektnamn</strong></p>
                         <input type="text" value={editedProject.title} 
                                onChange={(e) => setEditedProject({ ...editedProject, title: e.target.value })} 
                                className="border p-2 w-full rounded mb-2" />
+                        <p><strong>Beskrivning</strong></p>
                         <textarea value={editedProject.description} 
                                   onChange={(e) => setEditedProject({ ...editedProject, description: e.target.value })} 
                                   className="border p-2 w-full rounded mb-2" />
+                        <p><strong>Startdatum</strong></p>
                         <input type="date" value={editedProject.startDate} 
                                onChange={(e) => setEditedProject({ ...editedProject, startDate: e.target.value })} 
                                className="border p-2 w-full rounded mb-2" />
+                        <p><strong>Slutdatum</strong></p>
                         <input type="date" value={editedProject.endDate} 
                                onChange={(e) => setEditedProject({ ...editedProject, endDate: e.target.value })} 
                                className="border p-2 w-full rounded mb-2" />
+                        <p><strong>Projektansvarig</strong></p>
                         <input type="text" value={editedProject.projectManager} 
                                onChange={(e) => setEditedProject({ ...editedProject, projectManager: e.target.value })} 
                                className="border p-2 w-full rounded mb-2" />
+                        <p><strong>Total kostnad</strong></p>
                         <input type="number" value={editedProject.totalPrice} 
                                onChange={(e) => setEditedProject({ ...editedProject, totalPrice: e.target.value })} 
                                className="border p-2 w-full rounded mb-2" />
+                        <p><strong>Status</strong></p>
                         <select
                             value={editedProject.status}
                             onChange={(e) => setEditedProject({ ...editedProject, status: e.target.value })}
@@ -88,6 +95,7 @@ const ProjectDetailModal = ({ project, onClose }) => {
                             <option value="Pågående">Pågående</option>
                             <option value="Avslutat">Avslutat</option>
                         </select>
+                        <p><strong>Tjänst</strong></p>
                         <input type="text" value={editedProject.service} 
                                onChange={(e) => setEditedProject({ ...editedProject, service: e.target.value })} 
                                className="border p-2 w-full rounded mb-2" />
@@ -101,7 +109,7 @@ const ProjectDetailModal = ({ project, onClose }) => {
                         <p><strong>Beskrivning:</strong> {editedProject.description}</p>
                         <p><strong>Startdatum:</strong> {editedProject.startDate}</p>
                         <p><strong>Slutdatum:</strong> {editedProject.endDate}</p>
-                        <p><strong>Projektchef:</strong> {editedProject.projectManager}</p>
+                        <p><strong>Projektansvarig:</strong> {editedProject.projectManager}</p>
                         <p><strong>Totalt pris:</strong> {editedProject.totalPrice}</p>
                         <p><strong>Status:</strong> {editedProject.status}</p>
                         <p><strong>Tjänst:</strong> {editedProject.service}</p>
