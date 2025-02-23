@@ -9,7 +9,7 @@ const ProjectForm = () => {
     const [endDate, setEndDate] = useState("");
     const [projectManager, setProjectManager] = useState("");
     const [totalPrice, setTotalPrice] = useState("");
-    const [status, setStatus] = useState("");
+    const [status, setStatus] = useState("Ej påbörjat");
     const [service, setService] = useState("");
     const [customerName, setCustomerName] = useState("");
 
@@ -27,7 +27,7 @@ const ProjectForm = () => {
             endDate,
             projectManager,
             totalPrice,
-            status,
+            status: status || "Ej påbörjat",
             service,
             customerName
         };
@@ -98,13 +98,15 @@ const ProjectForm = () => {
             onChange={(e) => setTotalPrice(e.target.value)}
             className="border p-2 w-full rounded mb-2" 
         />
-        <input
-            type="text"
-            placeholder="status"
+        <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className="border p-2 w-full rounded mb-2" 
-        />
+            className="border p-2 w-full rounded mb-2"
+        >
+            <option value="Ej påbörjat">Ej påbörjat</option>
+            <option value="Pågående">Pågående</option>
+            <option value="Avslutat">Avslutat</option>
+        </select>
         <input
             type="text"
             placeholder="Produkt"
