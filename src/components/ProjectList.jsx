@@ -6,22 +6,25 @@ const ProjectList = () => {
     const [projects, setProjects] = useState([]);
     const [selectedProject, setSelectedProject] = useState(null);
 
-    useEffect(() => {
-        const fetchProjects = async () => {
-            try {
-                const data = await getProjects();
-                setProjects(data);
-            } catch (error) {
-                console.error("error while fetching projects: ", error);
-            }
-        };
+    const fetchProjects = async () => {
+        try {
+            const data = await getProjects();
+            setProjects(data);
+        } catch (error) {
+            console.error("Error while fetching projects: ", error);
+        }
+    };
 
-        fetchProjects();
+    useEffect(() => {
+        fetchProjects(); 
     }, []);
 
     return (
         <div>
             <h2>Projektlista</h2>
+            <button onClick={fetchProjects} className="bg-blue-500 text-white px-4 py-2 rounded mb-4">
+            Hämta alla projekt
+            </button>
             <ul>
                 {projects.map((project) => (
                     <li key={project.id} className="border-b p-3 cursor-pointer" onClick={() => setSelectedProject(project)}>

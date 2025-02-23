@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { updateProject } from "../api/projectApi";
+import { deleteProject } from "../api/projectApi";
 
 const ProjectDetailModal = ({ project, onClose }) => {
     const [editedProject, setEditedProject] = useState(null);
@@ -31,6 +32,18 @@ const ProjectDetailModal = ({ project, onClose }) => {
             onClose();
         } catch (error) {
             console.error("error while updating project: ", error);
+        }
+    };
+
+    const handleDelete = async () => {
+        try {
+            // Call the API to delete the project
+            await deleteProject(project.id);
+            // Close the modal after deletion
+            onClose();
+            alert("Projektet har tagits bort");
+        } catch (error) {
+            console.error("Error while deleting project: ", error);
         }
     };
 
@@ -96,8 +109,8 @@ const ProjectDetailModal = ({ project, onClose }) => {
                         <button onClick={() => setIsEditing(true)} className="bg-blue-500 text-white px-4 py-2 rounded">Redigera</button>
                     </>
                 )}
-
                 <button onClick={onClose} className="mt-4 bg-red-500 text-white px-4 py-2 rounded">Stäng</button>
+                <button onClick={handleDelete} className="bg-red-500 text-white px-4 py-2 rounded mt-2">Ta bort projekt</button>
             </div>
         </div>
     );
